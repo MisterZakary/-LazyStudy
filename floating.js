@@ -8,7 +8,8 @@ let window = floaty.window(
         <button id="switchXX" text=" 切到 学习强国 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startLL" text=" 开始浏览 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="switchST" text=" 切到 搜题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
-        <button id="startDT" text=" 开始答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startDT" text=" 挑战答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startMR" text=" 每日答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="stop" text=" 停止 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="exit" text=" 退出悬浮窗 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
     </vertical>
@@ -16,7 +17,7 @@ let window = floaty.window(
 
 let deviceWidth = device.width;
 let deviceHeight = device.height;
-window.setPosition(parseInt(deviceWidth * 0.55), parseInt(deviceHeight * 0.2));
+window.setPosition(deviceWidth * 0.8, deviceHeight*0.3);
 setInterval(() => {
 }, 1000);
 
@@ -106,6 +107,26 @@ window.startLL.click(() => {
 
 window.startDT.click(() => {
     let ss = "./dati.js";
+    if (th == null) {
+        th = threads.start(function () {
+            toastLog(" 开启线程");
+            let begin = require(ss);
+            begin();
+        });
+    } else {
+        if (th.isAlive()) {
+            toastLog(" 脚本都在运行了你还点！？");
+        } else {
+            th = threads.start(function () {
+                let begin = require(ss);
+                begin();
+            });
+        }
+    }
+});
+
+window.startMR.click(() => {
+    let ss = "./meiridati.js";
     if (th == null) {
         th = threads.start(function () {
             toastLog(" 开启线程");

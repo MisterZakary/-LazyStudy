@@ -22,6 +22,7 @@ function DailyQuestion() {
             //获取答案字符串
             var indexKey = tipsStr.indexOf(keyStr);
             var ansFind = tipsStr.substr(indexKey - blankLen, blankLen);
+            //找不到答案时，用0补全
             let answer=blankLen>ansFind.length ? "0".repeat(blankLen):ansFind;
             toastLog(answer);
             //sleep(500);
@@ -95,15 +96,20 @@ function DailyQuestion() {
 }
 
 
-while (1) {
-    if (className("Button").exists()) {
-        if (className("Button").desc("再来一组").exists()) {
-            className("Button").desc("再来一组").findOnce().click();
-        } else {
-            className("Button").findOnce().click();
+function begin()
+{
+    while (true) {
+        if (className("Button").exists()) {
+            if (className("Button").desc("再来一组").exists()) {
+                className("Button").desc("再来一组").findOnce().click();
+            } else {
+                className("Button").findOnce().click();
+            }
         }
+        sleep(1000);
+        DailyQuestion();
+        sleep(1000);
     }
-    sleep(1000);
-    DailyQuestion();
-    sleep(1000);
 }
+
+module.exports=begin;
