@@ -1,0 +1,16 @@
+{
+  "assets": [],
+  "build": {
+    "build_id": "BF0A6668-23",
+    "build_number": 23,
+    "build_time": 1576058564597
+  },
+  "useFeatures": [],
+  "icon": "res/logo.png",
+  "main": "main.js",
+  "name": "懒人学习",
+  "packageName": "com.lazyStudy",
+  "scripts": {},
+  "versionCode": 2,
+  "versionName": "2.1.0"
+}

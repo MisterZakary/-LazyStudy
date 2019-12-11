@@ -1,7 +1,8 @@
 //先引用
-importClass(android.database.sqlite.SQLiteDatabase);
+//importClass(android.database.sqlite.SQLiteDatabase);
 importClass(android.media.MediaPlayer);
-
+var tikuCommon=require("./tikuCommon.js");
+//import {searchTiku,insertOrUpdate} from "./tikuCommon.js";
 function searchNet(question) {
     var ansNet = [];
     //toastLog("开始网络搜题");
@@ -66,6 +67,7 @@ function beep() {
     }, 5000);
 }
 
+/*
 function searchTiku(keyw) {
     //数据文件名
     var dbName = "tiku.db";
@@ -114,7 +116,7 @@ function insertOrUpdate(sqlstr) {
     toastLog(sqlstr);
     db.close();
 }
-
+*/
 
 function tiaoZhan() {
     let failDo = false;
@@ -151,7 +153,7 @@ function tiaoZhan() {
         return;
     }
 
-    var ansTiku = searchTiku(_timu);
+    var ansTiku = tikuCommon.searchTiku(_timu);
     sleep(300);
 
     var answer = "";
@@ -217,14 +219,14 @@ function tiaoZhan() {
     if (!className("android.view.View").descContains("本次答对").exists()) {//如果答对
         if (ansTiku == "") {
             var sqlstr = "INSERT INTO tiku VALUES ('" + _timu + "','" + answer + "','')";
-            insertOrUpdate(sqlstr);
+            tikuCommon.insertOrUpdate(sqlstr);
         }
     } else {
         if (ansTiku != "" && !failDo) {
             //删掉这条
             toastLog("删除答案: " + ansTiku);
             var sqlstr = "DELETE FROM tiku WHERE question LIKE '" + _timu + "'";
-            insertOrUpdate(sqlstr);
+            tikuCommon.insertOrUpdate(sqlstr);
         }
     }
     //sleep(1000);
