@@ -13,7 +13,7 @@ function delay(seconds)
 function begin()
 {
     var textOrder=text("欢迎发表你的观点").findOnce().drawingOrder();
-    toastLog("textOrder = "+textOrder);
+    //toastLog("textOrder = "+textOrder);
     var shouOrder=textOrder+2;
     var zhuanOrder=textOrder+3;
     /*className("ImageView").find().forEach(item=>{

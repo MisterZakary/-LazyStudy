@@ -1,18 +1,18 @@
-toastLog(" 请在无障碍中选择本 APP");
+//toastLog(" 请在无障碍中选择本 APP");
 auto.waitFor();
 let waysOfShopping = 0;
 
 let window = floaty.window(
     <vertical>
-        <button id="move" text=" 移动 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="switchXX" text=" 切到 学习强国 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="startLL" text=" 开始浏览 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="startSPF" text=" 收藏评转 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="switchST" text=" 切到 搜题 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="startDT" text=" 挑战答题 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="startMR" text=" 每日答题 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="stop" text=" 停止 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
-        <button id="exit" text=" 退出悬浮窗 " w="90" h="25" bg="#77ffffff" textSize="10sp" />
+        <button id="move" text=" 移动 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="switchXX" text=" 切到 强国 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startLL" text=" 开始浏览 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startSPF" text=" 收藏评转 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="switchST" text=" 切到 搜题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startDT" text=" 挑战答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startMR" text=" 每日答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="stop" text=" 停止 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="exit" text=" 退出悬浮窗 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
     </vertical>
 );
 
