@@ -55,16 +55,17 @@ function drawfloaty(x, y) {
 }
 
 function beep() {
-    var player = new MediaPlayer();
-    var path = files.cwd() + "/beep.mp3";
-    player.setDataSource(path);
-    player.setVolume(50, 50);
-    player.prepare();
-    player.start();
-    setTimeout(() => {
-        player.stop();
-        player.release();
-    }, 5000);
+    return;
+//     var player = new MediaPlayer();
+//     var path = files.cwd() + "/beep.mp3";
+//     player.setDataSource(path);
+//     player.setVolume(50, 50);
+//     player.prepare();
+//     player.start();
+//     setTimeout(() => {
+//         player.stop();
+//         player.release();
+//     }, 5000);
 }
 
 /*
