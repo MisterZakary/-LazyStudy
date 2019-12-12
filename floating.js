@@ -7,6 +7,7 @@ let window = floaty.window(
         <button id="move" text=" 移动 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="switchXX" text=" 切到 学习强国 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startLL" text=" 开始浏览 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startSPZ" text=" 收藏评转 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="switchST" text=" 切到 搜题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startDT" text=" 挑战答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startMR" text=" 每日答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
@@ -64,7 +65,7 @@ window.exit.click(() => {
 
 
 let th = null;
-
+//切到 搜题
 window.switchST.click(() => {
     let ss = "./souti.js";
     if (th == null) {
@@ -84,7 +85,7 @@ window.switchST.click(() => {
         }
     }
 });
-
+//浏览
 window.startLL.click(() => {
     let ss = "./liulan.js";
     if (th == null) {
@@ -104,7 +105,27 @@ window.startLL.click(() => {
         }
     }
 });
-
+//收藏评论转发
+window.startSPZ.click(() => {
+    let ss = "./shouCangPingZhuan.js";
+    if (th == null) {
+        th = threads.start(function () {
+            toastLog(" 开启线程");
+            let begin = require(ss);
+            begin();
+        });
+    } else {
+        if (th.isAlive()) {
+            toastLog(" 脚本都在运行了你还点！？");
+        } else {
+            th = threads.start(function () {
+                let begin = require(ss);
+                begin();
+            });
+        }
+    }
+});
+//挑战答题
 window.startDT.click(() => {
     let ss = "./dati.js";
     if (th == null) {
@@ -124,7 +145,7 @@ window.startDT.click(() => {
         }
     }
 });
-
+//每日答题
 window.startMR.click(() => {
     let ss = "./meiridati.js";
     if (th == null) {
@@ -144,7 +165,7 @@ window.startMR.click(() => {
         }
     }
 });
-
+//停止
 window.stop.click(() => {
     if (th == null) {
         toastLog(" 没有进行中的脚本 ");

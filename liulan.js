@@ -247,12 +247,12 @@ function articleStudy()
             console.log("正在学习第"+(i+1)+"篇文章...");
             fail=0;
             var wave=random(-5,5);//上下随机波动5秒
-            article_timing(i,aTime+wave);
-            if(i<cCount)//收藏分享2篇文章
-            {
-                CollectAndShare(i);//收藏+分享。若运行到此报错请注释本行！
-                comment(i);//评论
-            }
+            // article_timing(i,aTime+wave);
+            // if(i<cCount)//收藏分享2篇文章
+            // {
+            //     CollectAndShare(i);//收藏+分享。若运行到此报错请注释本行！
+            //     comment(i);//评论
+            // }
             back();//返回主界面
             while(!desc("学习").exists());//等待加载出主页
             delay(2);
@@ -342,12 +342,13 @@ function listenToRadio()
 function CollectAndShare(i)
 {
     console.log("正在进行第"+(i+1)+"次收藏和分享...");
-
-    var collectIcon = classNameContains("ImageView").depth(2).findOnce(2);//右下角收藏按钮
+    var collectIcon = className("com.uc.webview.export.WebView").findOnce().parent().child(7);//右下角收藏按钮
+    //var collectIcon = classNameContains("ImageView").depth(2).findOnce(2);//右下角收藏按钮
     collectIcon.click();//点击收藏
     delay(2);
     console.info("收藏成功!");
-    var shareIcon = classNameContains("ImageView").depth(2).findOnce(3);//右下角分享按钮
+    var shareIcon = className("com.uc.webview.export.WebView").findOnce().parent().child(8);//右下角分享按钮
+    //var shareIcon = classNameContains("ImageView").depth(2).findOnce(3);//右下角分享按钮
     shareIcon.click();//点击分享
 
     while(!textContains("分享到学习强").exists());//等待弹出分享选项界面
