@@ -7,10 +7,10 @@ let window = floaty.window(
         <button id="move" text=" 移动 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="switchXX" text=" 切到 强国 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startLL" text=" 开始浏览 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
-        <button id="startSPF" text=" 收藏评转 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startSPF" text=" 收、评、分 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="switchST" text=" 切到 搜题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="startDT" text=" 挑战答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
-        <button id="startMR" text=" 每日答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
+        <button id="startMR" text=" 每日周专项答题 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="stop" text=" 停止 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
         <button id="exit" text=" 退出悬浮窗 " w="90" h="35" bg="#77ffffff" textSize="10sp" />
     </vertical>

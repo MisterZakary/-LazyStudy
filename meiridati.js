@@ -2,8 +2,13 @@
 var tikuCommon = require("./tikuCommon.js");
 
 function getTimuArray() {
-    var timuArray = new Array();
-    var timuCollections = descEndsWith("/5").findOnce().parent().parent().child(1);
+    if(descStartsWith("填空题").exists()){
+        var timuCollections = className("EditText").findOnce().parent().parent();
+    }else{//选择题
+        var timuCollections = className("ListView").findOnce().parent().child(1);
+    }
+    var timuArray = [];
+    //var timuCollections = descEndsWith("/5").findOnce().parent().parent().child(1);
     if (timuCollections.childCount() == 0) { //是选择题
         timuArray.push(timuCollections.desc());
     } else { //填空题
@@ -46,7 +51,7 @@ function getTipsStr() {
     return _tipsStr;
 }
 
-function getByTimu(timu, tipsStr) {
+function getFromTips(timu, tipsStr) {
     var ansTips = "";
     for (var i = 1; i < timu.length - 1; i++) {
         if (timu[i].charAt(0) == "|") {
@@ -63,8 +68,8 @@ function getByTimu(timu, tipsStr) {
 function clickByTips(tipsStr) {
     var clickStr = "";
     var isFind = false;
-    if (className("android.widget.ListView").exists()) {
-        var listArray = className("android.widget.ListView").findOne().children();
+    if (className("ListView").exists()) {
+        var listArray = className("ListView").findOne().children();
         listArray.forEach(item => {
             var ansStr = item.child(0).child(2).desc();
             if (tipsStr.indexOf(ansStr) >= 0) {
@@ -83,16 +88,13 @@ function clickByTips(tipsStr) {
 }
 
 function clickByAnswer(answer) {
-    if (className("android.widget.ListView").exists()) {
-        var listArray = className("android.widget.ListView").findOne().children();
+    if (className("ListView").exists()) {
+        var listArray = className("ListView").findOnce().children();
         listArray.forEach(item => {
             var listIndexStr = item.child(0).child(1).desc().charAt(0);
-            //历史遗留，兼容单元答案为非ABCD
+            //单选答案为非ABCD
             var listDescStr = item.child(0).child(2).desc();
-            if (answer.indexOf(listIndexStr) >= 0) {
-                item.child(0).click();
-            }
-            if (answer.indexOf(listDescStr) >= 0) {
+            if (answer.indexOf(listIndexStr)>=0 || answer==listDescStr) {
                 item.child(0).click();
             }
         });
@@ -152,7 +154,7 @@ function DailyQuestion() {
     sleep(500);
     //获得题目数组
     var timuArray = getTimuArray();
-    var blankArray = new Array();
+    var blankArray = [];
     //toastLog("timuArray=" + timuArray.toString());
 
     //由题目数组获得题目字符串
@@ -172,11 +174,11 @@ function DailyQuestion() {
     //获取答案
     var answer = ansTiku;
     //toastLog("answer=" + answer);
-    if (desc("填空题").exists()) {
+    if (descStartsWith("填空题").exists()) {
         //toastLog("填空题");
         if (answer == "") {
             var tipsStr = getTipsStr();
-            answer = getByTimu(timuArray, tipsStr);
+            answer = getFromTips(timuArray, tipsStr);
         }
 
         //点击 文本框

@@ -12,7 +12,7 @@ function searchTiku(keyw) {
     //创建或打开数据库
     var db = SQLiteDatabase.openOrCreateDatabase(path, null);
 
-    query = "SELECT answer,wrongAnswer FROM tiku WHERE question LIKE '" + keyw + "%'"
+    query = "SELECT answer FROM tiku WHERE question LIKE '" + keyw + "%'"
     //query="select * from tiku"
     //db.execSQL(query);
 
@@ -21,13 +21,14 @@ function searchTiku(keyw) {
     //var toaststr = "共有" + cursor.getCount() + "行记录，答案是 :";
     //找到记录
     if (cursor.getCount()) {
+        cursor.moveToFirst();
         //toast("找到答案");
         //toaststr = toaststr + cursor.getString(0);  
         var ansTiku = cursor.getString(0);
         cursor.close();
         return ansTiku;
     } else {
-        toastLog("题库中未找到: " + keyw);
+        log("题库中未找到: " + keyw);
         cursor.close();
         return "";
     }

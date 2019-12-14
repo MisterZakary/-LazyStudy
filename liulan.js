@@ -250,8 +250,8 @@ function articleStudy()
             article_timing(i,aTime+wave);
             if(i<cCount)//收藏分享2篇文章
             {
-                CollectAndShare(i);//收藏+分享。若运行到此报错请注释本行！
-                comment(i);//评论
+                //CollectAndShare(i);//收藏+分享。若运行到此报错请注释本行！
+                //comment(i);//评论
             }
             back();//返回主界面
             while(!desc("学习").exists());//等待加载出主页

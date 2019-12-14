@@ -1,6 +1,6 @@
 # 懒人学习
 
-一款基于auto.js，安卓自动学习脚本，支持看文章视频、收藏分享转发、挑战答题和每日答题。
+一款基于auto.js，安卓自动学习脚本，支持看文章视频、收藏分享评论、挑战答题和每日答题。
 
 [release下载](https://github.com/lgpersonal/LazyStudy/releases/)
 
