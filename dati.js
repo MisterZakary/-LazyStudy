@@ -177,7 +177,7 @@ function tiaoZhan() {
     });
     if (hasClicked == false) {//没有点击成功
         toastLog("点击答案失败，请手动点击");
-        hasError = true;
+        //hasError = true;
         beep();
         //return;
     }
