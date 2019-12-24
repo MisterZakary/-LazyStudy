@@ -27,13 +27,6 @@ function getTimuArray() {
 function getTipsStr() {
     var _tipsStr = "";
     while (_tipsStr == "") {
-        if (desc("查看提示").exists()) {
-            desc("查看提示").findOnce().click();
-        } else {
-            log("Not found 查看提示");
-            continue;
-        }
-        sleep(1000);
         if (desc("提示").exists()) { //正确捕获提示
             var tipsLine = desc("提示").findOnce().parent();
             //获取提示内容
@@ -41,12 +34,20 @@ function getTipsStr() {
             _tipsStr = tipsView.desc();
             //关闭提示
             tipsLine.child(1).click();
-
-        } else {
-            log("Not found  提示");
-            click(device.width * 0.5, device.height * 0.2);
-            continue;
+            break;
         }
+        if (desc("查看提示").exists()) {           
+            var seeTips=desc("查看提示").findOnce();
+            seeTips.click();
+            sleep(1000); 
+            click(device.width*0.5,device.height*0.41);
+            sleep(800);
+            click(device.width*0.5,device.height*0.35);
+        } else {
+            log("Not found 查看提示");
+            //continue;
+        }
+        
     }
     return _tipsStr;
 }
@@ -143,7 +144,7 @@ function clickBtn() {
             className("Button").findOnce().click();
         }
     } else {
-        click(device.width * 0.85, device.height * 0.1);
+        click(device.width * 0.85, device.height * 0.06);
     }
 }
 

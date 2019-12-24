@@ -1,9 +1,9 @@
 {
   "assets": [],
   "build": {
-    "build_id": "9D0F50A4-53",
-    "build_number": 53,
-    "build_time": 1576345248570
+    "build_id": "654EA4C3-59",
+    "build_number": 59,
+    "build_time": 1577148230137
   },
   "useFeatures": [],
   "icon": "res/logo.png",
@@ -12,5 +12,5 @@
   "packageName": "com.lazyStudy",
   "scripts": {},
   "versionCode": 2,
-  "versionName": "2.3.0"
+  "versionName": "2.3.2"
 }
