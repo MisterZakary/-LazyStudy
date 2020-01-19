@@ -52,12 +52,16 @@ function doChallengeAnswer() {
     ansSearchArray = tikuCommon.searchTiku(_timu);
     if (ansSearchArray.length == 0) { //tiku表中没有，搜索网络表
         ansSearchArray = tikuCommon.searchNet(_timu);
+    }else{
+        answerArray = ansSearchArray;
     }
+
     if (ansSearchArray.length == 0) { //网络中也没有，随机
         let randomIndex = random(0, ansTimu.length - 1);
         answerArray.push({ "question": _timu, "answer": ansTimu[randomIndex] });
+    }else{
+        answerArray = ansSearchArray;
     }
-    answerArray = ansSearchArray;
 
     var answer = "";
     //对答案数组逐项点击
