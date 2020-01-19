@@ -372,7 +372,7 @@ function listenToRadio()
     delay(2);
     click("听新闻广播");
     delay(2);
-    click("推荐收听");
+    click("正在收听");
     console.log("正在收听“中国之声”广播...");
     delay(2);
     back();//返回电台界面
